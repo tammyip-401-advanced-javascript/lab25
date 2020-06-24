@@ -1,12 +1,5 @@
 'use strict';
 
-// Adding a key/value to your hashtable results in the value being in the data structure
-// Retrieving based on a key returns the value stored
-// Successfully returns null for a key that does not exist in the hashtable
-// Successfully handle a collision within the hashtable
-// Successfully retrieve a value from a bucket within the hashtable that has a collision
-// Successfully hash a key to an in-range value
-
 const HashTable = require('./hashtable2.js');
 
 describe('HashTable tests', () => {
@@ -31,13 +24,13 @@ describe('HashTable tests', () => {
 
   it('can handles a collision within the hashtable', () => {
 
-    hashtable.add('Rose', '123');
-    hashtable.add('Seor', '321');
+    hashtable.add('Rose', 'UK');
+    hashtable.add('Roes', 'testing');
 
-    let indx = hashtable.hash('Seor');
+    let indx = hashtable.hash('Roes');
     let indx2 = hashtable.hash('Rose');
+
     expect(indx).toBe(indx2);
-    expect(hashtable.hashtable[indx].val).toEqual('123');
-    expect(hashtable.hashtable[indx].next.val).toEqual('321');
+    expect(hashtable.get('Roes')).toBe('testing');
   });
-});
+})
